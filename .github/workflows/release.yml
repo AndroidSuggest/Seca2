@@ -40,6 +40,6 @@ jobs:
         uses: softprops/action-gh-release@v3
         with:
           tag_name: ${{ env.VERSION }}
-          files: apps/contacts/build/outputs/apk/release/seca-${VERSION}-own.apk
+          files: apps/contacts/build/outputs/apk/release/seca-${{ env.VERSION }}-own.apk
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
