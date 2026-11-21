@@ -54,15 +54,16 @@ extensions.configure<ApplicationExtension> {
             isMinifyEnabled = true
             isShrinkResources = true
             proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"))
+            signingConfig = signingConfigs.getByName("debug")
             // F-Droid signs releases itself and needs them unsigned: without the release key,
             // nothing signs them. To try a release on one's own phone,
             // -Pseca.signReleaseWithDebugKey signs it with the debug key, the one the debug
             // builds use, so it installs over them and the Seca apps still recognise each other.
-            when {
-                providers.gradleProperty("seca.signReleaseWithDebugKey").isPresent ->
-                    signingConfig = signingConfigs.getByName("debug")
-                releaseStore.isPresent -> signingConfig = signingConfigs.getByName("release")
-            }
+            //when {
+            //    providers.gradleProperty("seca.signReleaseWithDebugKey").isPresent ->
+            //        signingConfig = signingConfigs.getByName("debug")
+            //    releaseStore.isPresent -> signingConfig = signingConfigs.getByName("release")
+            //}
         }
     }
     lint {
