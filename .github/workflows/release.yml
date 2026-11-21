@@ -34,12 +34,12 @@ jobs:
           ./gradlew :apps:contacts:assembleRelease --no-daemon --parallel --build-cache --configuration-cache
 
       - name: Rename APK
-        run: mv app/build/outputs/apk/release/*.apk app/build/outputs/apk/release/seca-${VERSION}-own.apk
+        run: mv apps/contacts/build/outputs/apk/release/*.apk apps/contacts/build/outputs/apk/release/seca-${VERSION}-own.apk
 
       - name: Upload release APK
         uses: softprops/action-gh-release@v3
         with:
           tag_name: ${{ env.VERSION }}
-          files: app/build/outputs/apk/release/seca-${VERSION}-own.apk
+          files: apps/contacts/build/outputs/apk/release/seca-${VERSION}-own.apk
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
